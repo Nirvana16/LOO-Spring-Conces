@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8"/>
+		<meta name="viewport" content="width=device-width" />
+		<title>Estoque de Veiculos</title>
+		<link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet"/>
+		<link th:href="@{/webjars/bootstrap/css/bootstrap-theme.min.css}" rel="stylesheet"/>
+		<link rel="stylesheet" type="text/css" href="/css/style.css"/>
+	</head>
+	
+	<body>
+		<nav class="navbar navbar-default navbar-inverse">
+			<div class="container-fluid">
+		    	<div class="navbar-header">
+		      		<a class="navbar-brand" href="#">
+		        		<img alt="Controle de Veiculos" src="/images/jd.png" />
+		     		 </a>
+		    	</div>
+		 	 </div>
+		</nav>
+	
+<!-- 		<nav class="navbar navbar-inverse navbar-static-top">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="#">
+						<img alt="Nirvana Controle de Veiculos" src="/images/jd.png" />
+					</a>
+				</div>
+			</div>	
+		</nav> -->
+		<div class="panel panel-default" style="margin: 10px">
+			<div class="panel-heading">
+				<h1 class="panel-title">Veiculos</h1>
+			</div>
+			<div class="panel-body">
+				<form class="form-inline" method="POST" style="margin: 20px 0" th:object="${veiculo}" th:action="@{/veiculos}">
+					<div class="form-group">
+						<input type="text" class="form-control" placeholder="Marca" th:field="*{marca}"/>
+						<input type="text" class="form-control" placeholder="Modelo" th:field="*{modelo}"/>
+						<input type="text" class="form-control" placeholder="Placa" th:field="*{placa}"/>
+						<input type="text" class="form-control" placeholder="Cor" th:field="*{cor}"/>
+						<input type="text" class="form-control" placeholder="Ano Modelo" th:field="*{anoModelo}"/>
+						<input type="text" class="form-control" placeholder="Motor" th:field="*{motor}"/>
+						<input type="text" class="form-control" placeholder="Combustivel" th:field="*{combustivel}"/>
+						<input type="text" class="form-control" placeholder="Observações" th:field="*{observacoes}"/>
+						<button type="submit" class="btn btn-primary">Adicionar</button>
+					</div>
+				</form>	
+				<div class="panel panel-default" style="margin: 5px">
+					<div class="panel-heading ">
+						<h1 class="panel-title text-center">Listagem de Veículos</h1>
+					</div>
+				</div>
+				<table class="table">
+					<thead>
+						<tr>
+							<th>Codigo</th>
+							<th>Marca</th>
+							<th>Modelo</th>
+							<th>Placa</th>
+							<th>Cor</th>
+							<th>Ano Mod</th>
+							<th>Motor</th>
+							<th>Combustivel</th>
+							<th>Observações</th>
+						</tr>
+					</thead>
+					<tbody>				
+							<tr th:each="veiculo : ${veiculos}">
+							<td th:text="${veiculo.id}"></td>
+							<td th:text="${veiculo.marca}"></td>
+							<td th:text="${veiculo.modelo}"></td>
+							<td th:text="${veiculo.placa}"></td>
+							<td th:text="${veiculo.cor}"></td>
+							<td th:text="${veiculo.anoModelo}"></td>
+							<td th:text="${veiculo.motor}"></td>
+							<td th:text="${veiculo.combustivel}"></td>
+							<td th:text="${veiculo.observacoes}"></td>						
+							 
+						</tr>
+					</tbody>
+				</table>		
+			</div>
+		</div>		 
+		<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+		<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>		
+	</body>
+</html>
