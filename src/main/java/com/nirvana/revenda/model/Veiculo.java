@@ -1,24 +1,92 @@
 package com.nirvana.revenda.model;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import org.hibernate.annotations.GenericGenerator;
-
 
 @Entity
 public class Veiculo implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
+	
 	@Id
 	@GeneratedValue(generator = "increment")
 	@GenericGenerator(name = "increment", strategy = "increment")
 	private Long id;
+		
+	//trocar marca por fabricante no futuro
+	private String marca, modelo, placa, cor, anoFabricacao, anoModelo, motor, combustivel, observacoes;
 	
-	private String marca, modelo, placa, cor, anoModelo, motor, combustivel, observacoes;
+	
+	@Temporal(TemporalType.DATE)
+	private Date dataEntradaEstoque;
+	
+	
+	@Enumerated(EnumType.STRING)
+	private Situacao situacao;	
+	
+	
+	//implementar 
+	//private Fabricante fabricante;
+	
+	//implementar 
+	//private Cliente cliente;
+	
+	
+	public Veiculo(Long id, String marca, String modelo, String placa, String cor, String anoFabricacao,
+			String anoModelo, String motor, String combustivel, String observacoes, Date dataEntradaEstoque,
+			Situacao situacao) {
+		super();
+		this.id = id;
+		this.marca = marca;
+		this.modelo = modelo;
+		this.placa = placa;
+		this.cor = cor;
+		this.anoFabricacao = anoFabricacao;
+		this.anoModelo = anoModelo;
+		this.motor = motor;
+		this.combustivel = combustivel;
+		this.observacoes = observacoes;
+		this.dataEntradaEstoque = dataEntradaEstoque;
+		this.situacao = situacao;
+	}
+
+	public Veiculo() {
+		
+	}
+
+	public String getAnoFabricacao() {
+		return anoFabricacao;
+	}
+
+	public void setAnoFabricacao(String anoFabricacao) {
+		this.anoFabricacao = anoFabricacao;
+	}
+
+	public Date getDataEntradaEstoque() {
+		return dataEntradaEstoque;
+	}
+
+	public void setDataEntradaEstoque(Date dataEntradaEstoque) {
+		this.dataEntradaEstoque = dataEntradaEstoque;
+	}
+
+	public Situacao getSituacao() {
+		return situacao;
+	}
+
+	public void setSituacao(Situacao situacao) {
+		this.situacao = situacao;
+	}
 
 	public Long getId() {
 		return id;
@@ -94,24 +162,6 @@ public class Veiculo implements Serializable {
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
-	}
-
-	public Veiculo(Long id, String marca, String modelo, String placa, String cor, String anoModelo, String motor,
-			String combustivel, String observacoes) {
-		super();
-		this.id = id;
-		this.marca = marca;
-		this.modelo = modelo;
-		this.placa = placa;
-		this.cor = cor;
-		this.anoModelo = anoModelo;
-		this.motor = motor;
-		this.combustivel = combustivel;
-		this.observacoes = observacoes;
-	}
-	
-	public Veiculo() {
-		
 	}
 
 	@Override

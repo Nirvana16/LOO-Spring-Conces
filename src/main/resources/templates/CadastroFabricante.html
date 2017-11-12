@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width" />
+<title>Cadastro de Fabricantes</title>
+<link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"
+	rel="stylesheet" />
+<link th:href="@{/webjars/bootstrap/css/bootstrap-theme.min.css}"
+	rel="stylesheet" />
+<link rel="stylesheet" type="text/css" href="/css/style.css" />
+</head>
+
+<body>
+	<nav class="navbar navbar-default navbar-inverse">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="#"> <img
+					alt="Controle de Veiculos" src="/images/jd.png" />
+				</a>
+			</div>
+		</div>
+	</nav>
+	<div class="panel panel-default" style="margin: 10px">
+		<div class="panel-heading">
+			<div class="clearfix">
+				<a class="btn btn-link aw-link-panel" href="/veiculos">Voltar
+					para Veículos</a>
+			</div>
+			<h1 class="panel-title">
+				<label for="marca">Informações dos Fabricantes</label>
+			</h1>
+		</div>
+		<div class="panel-body">
+			<form class="form-horizontal" method="POST" th:object="${fabricante}"
+				th:action="@{/fabricantes}">
+
+				<div class="form-group">
+					<label for="nome" class="col-sm-1 control-label">Nome</label>
+					<div class="col-sm-10">
+						<input type="text" id="nome" class="form-control"
+							placeholder="Nome do Fabricante" th:field="*{nome}" />
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="cnpj" class="col-sm-1 control-label">CNPJ</label>
+					<div class="col-sm-10">
+						<input type="text" id="cnpj" class="form-control"
+							placeholder="Digite o Cnpj" th:field="*{cnpj}" />
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="telefone" class="col-sm-1 control-label">Telefone</label>
+					<div class="col-sm-10">
+						<input type="text" id="telefone" class="form-control"
+							placeholder="Informe o Telefone" th:field="*{telefone}" />
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="endereco" class="col-sm-1 control-label">Endereco</label>
+					<div class="col-sm-10">
+					<!-- 	<input type="text" id="endereco" class="form-control"
+							placeholder="Endereco" th:field="*{endereco}" /> -->
+						<textarea class="form-control" rows="3" id="endereco" placeholder="Endereco" th:field="*{endereco}" ></textarea>
+					</div>
+				</div>
+				<div class="botao">
+					<button type="submit"
+						class="btn btn-primary btn-lg pull-right navbar-inverse">Inserir</button>
+					<!-- navbar-inverse é um macete para por o botão na cor preta =) -->
+				</div>
+			</form>
+		</div>
+	</div>
+
+
+	<div class="panel panel-default" style="margin: 10px">
+		<div class="panel-heading ">
+			<h1 class="panel-title text-center">
+				<label>Listagem de Fabricantes</label>
+			</h1>
+		</div>
+		<div class="panel-body">
+			<div class="table-responsive">
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th>Codigo</th>
+							<th>Nome</th>
+							<th>CNPJ</th>
+							<th>Telefone</th>
+							<th>Endereco</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="fabricante : ${fabricantes}">
+							<td th:text="${fabricante.id}"></td>
+							<td th:text="${fabricante.nome}"></td>
+							<td th:text="${fabricante.cnpj}"></td>
+							<td th:text="${fabricante.telefone}"></td>
+							<td th:text="${fabricante.endereco}"></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+
+	<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+	<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+</body>
+</html>

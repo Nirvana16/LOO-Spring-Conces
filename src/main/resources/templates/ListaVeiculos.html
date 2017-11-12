@@ -53,35 +53,37 @@
 				</h1>
 			</div>
 			<div class="panel-body">
-				<table class="table">
-					<thead>
-						<tr>
-							<th>Codigo</th>
-							<th>Marca</th>
-							<th>Modelo</th>
-							<th>Placa</th>
-							<th>Cor</th>
-							<th>Ano Mod</th>
-							<th>Motor</th>
-							<th>Combustivel</th>
-							<th>Observações</th>
-						</tr>
-					</thead>
-					<tbody>				
-							<tr th:each="veiculo : ${veiculos}">
-							<td th:text="${veiculo.id}"></td>
-							<td th:text="${veiculo.marca}"></td>
-							<td th:text="${veiculo.modelo}"></td>
-							<td th:text="${veiculo.placa}"></td>
-							<td th:text="${veiculo.cor}"></td>
-							<td th:text="${veiculo.anoModelo}"></td>
-							<td th:text="${veiculo.motor}"></td>
-							<td th:text="${veiculo.combustivel}"></td>
-							<td th:text="${veiculo.observacoes}"></td>						
-							 
-						</tr>
-					</tbody>
-				</table>
+				<div class="table-responsive">
+					<table class="table table-striped">
+						<thead>
+							<tr>
+								<th>Codigo</th>
+								<th>Marca</th>
+								<th>Modelo</th>
+								<th>Placa</th>
+								<th>Cor</th>
+								<th>Ano Mod</th>
+								<th>Motor</th>
+								<th>Combustivel</th>
+								<th>Observações</th>
+							</tr>
+						</thead>
+						<tbody>				
+								<tr th:each="veiculo : ${veiculos}">
+								<td th:text="${veiculo.id}"></td>
+								<td th:text="${veiculo.marca}"></td>
+								<td th:text="${veiculo.modelo}"></td>
+								<td th:text="${veiculo.placa}"></td>
+								<td th:text="${veiculo.cor}"></td>
+								<td th:text="${veiculo.anoModelo}"></td>
+								<td th:text="${veiculo.motor}"></td>
+								<td th:text="${veiculo.combustivel}"></td>
+								<td th:text="${veiculo.observacoes}"></td>						
+								 
+							</tr>
+						</tbody>
+					</table>
+				</div>
 			</div>
 		</div>		
 	 
