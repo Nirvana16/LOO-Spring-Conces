@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+
 import com.nirvana.revenda.model.Veiculo;
 import com.nirvana.revenda.repository.Veiculos;
 
@@ -28,12 +29,24 @@ public class VeiculosController {
 		return mv;		
 	}
 	
+	/**
+	 * Metodo sem mensagem	 
 	@PostMapping
 	public String salvar(Veiculo veiculo) {
 		this.veiculos.save(veiculo);
 		
 		return "redirect:/veiculos";
 	}
+	* 
+	 */
 	
-
+	
+	@PostMapping
+	public ModelAndView salvar(Veiculo veiculo) {
+		this.veiculos.save(veiculo);
+		ModelAndView mv = new ModelAndView("ListaVeiculos");
+		mv.addObject("mensagem", "Titúlo SAlvo com Sucesso!!!");
+		return mv;
+		
+	}
 }
