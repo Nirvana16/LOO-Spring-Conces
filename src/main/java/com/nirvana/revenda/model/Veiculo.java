@@ -1,6 +1,7 @@
 package com.nirvana.revenda.model;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -10,8 +11,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.DecimalMax;
+import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.GenericGenerator;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.NumberFormat;
 
 @Entity
 public class Veiculo implements Serializable {
@@ -27,8 +33,16 @@ public class Veiculo implements Serializable {
 	private String marca, modelo, placa, cor, anoFabricacao, anoModelo, motor, combustivel, observacoes;
 	
 	
+	//@NotNull(message = "Data não pode ficar em branco")
+	@DateTimeFormat (pattern = "dd/MM/yyyy")
 	@Temporal(TemporalType.DATE)
 	private Date dataEntradaEstoque;
+	
+	//@NotNull(message = "Valor não pode ficar em branco")
+	//@DecimalMin(value = "0.01", message = "valor não pode ser zero")
+	//@DecimalMax(value = "9999999.99", message="valor não pode ser maior que 9.999.999,99")
+	@NumberFormat(pattern = "#,##0.00")
+	private BigDecimal valor;
 	
 	
 	@Enumerated(EnumType.STRING)
@@ -41,10 +55,10 @@ public class Veiculo implements Serializable {
 	//implementar 
 	//private Cliente cliente;
 	
-	
+
 	public Veiculo(Long id, String marca, String modelo, String placa, String cor, String anoFabricacao,
 			String anoModelo, String motor, String combustivel, String observacoes, Date dataEntradaEstoque,
-			Situacao situacao) {
+			BigDecimal valor, Situacao situacao) {
 		super();
 		this.id = id;
 		this.marca = marca;
@@ -57,40 +71,16 @@ public class Veiculo implements Serializable {
 		this.combustivel = combustivel;
 		this.observacoes = observacoes;
 		this.dataEntradaEstoque = dataEntradaEstoque;
+		this.valor = valor;
 		this.situacao = situacao;
 	}
-
-	public Veiculo() {
-		
-	}
-
-	public String getAnoFabricacao() {
-		return anoFabricacao;
-	}
-
-	public void setAnoFabricacao(String anoFabricacao) {
-		this.anoFabricacao = anoFabricacao;
-	}
-
-	public Date getDataEntradaEstoque() {
-		return dataEntradaEstoque;
-	}
-
-	public void setDataEntradaEstoque(Date dataEntradaEstoque) {
-		this.dataEntradaEstoque = dataEntradaEstoque;
-	}
-
-	public Situacao getSituacao() {
-		return situacao;
-	}
-
-	public void setSituacao(Situacao situacao) {
-		this.situacao = situacao;
-	}
-
+	
+	public Veiculo() {}
+	
 	public Long getId() {
 		return id;
 	}
+	
 
 	public void setId(Long id) {
 		this.id = id;
@@ -128,6 +118,14 @@ public class Veiculo implements Serializable {
 		this.cor = cor;
 	}
 
+	public String getAnoFabricacao() {
+		return anoFabricacao;
+	}
+
+	public void setAnoFabricacao(String anoFabricacao) {
+		this.anoFabricacao = anoFabricacao;
+	}
+
 	public String getAnoModelo() {
 		return anoModelo;
 	}
@@ -160,10 +158,34 @@ public class Veiculo implements Serializable {
 		this.observacoes = observacoes;
 	}
 
+	public Date getDataEntradaEstoque() {
+		return dataEntradaEstoque;
+	}
+
+	public void setDataEntradaEstoque(Date dataEntradaEstoque) {
+		this.dataEntradaEstoque = dataEntradaEstoque;
+	}
+
+	public BigDecimal getValor() {
+		return valor;
+	}
+
+	public void setValor(BigDecimal valor) {
+		this.valor = valor;
+	}
+
+	public Situacao getSituacao() {
+		return situacao;
+	}
+
+	public void setSituacao(Situacao situacao) {
+		this.situacao = situacao;
+	}
+
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
-
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;

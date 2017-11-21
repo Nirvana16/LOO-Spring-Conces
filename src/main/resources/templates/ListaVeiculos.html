@@ -32,13 +32,21 @@
 							<input type="text" class="form-control" placeholder="Modelo" th:field="*{modelo}"/>
 							<input type="text" class="form-control" placeholder="Placa" th:field="*{placa}"/>
 							<input type="text" class="form-control" placeholder="Cor" th:field="*{cor}"/>
-						</div>
-						<div class="form-group">
-							<input type="text" class="form-control" placeholder="Ano Modelo" th:field="*{anoModelo}"/>
 							<input type="text" class="form-control" placeholder="Motor" th:field="*{motor}"/>
 							<input type="text" class="form-control" placeholder="Combustivel" th:field="*{combustivel}"/>
-							<input type="text" class="form-control" placeholder="Observações" th:field="*{observacoes}"/>
 						</div>
+						<div class="form-group">
+							<input type="text" class="form-control" placeholder="Ano Fabricação" th:field="*{anoFabricacao}"/>
+							<input type="text" class="form-control" placeholder="Ano Modelo" th:field="*{anoModelo}"/>
+							<input type="text" class="form-control" placeholder="Valor" th:field="*{valor}"/>
+							<input type="text" class="form-control" placeholder="Data de Entrada" th:field="*{dataEntradaEstoque}"/>
+							<input type="text" class="form-control" placeholder="Observações" th:field="*{observacoes}"/>	
+							<select class="form-control" th:field="*{situacao}">
+								<option value="ESTOQUE">Em Estoque</option>
+								<option value="RESERVADO">Reservado</option>
+								<option value="VENDIDO">Vendido</option>			
+							</select>		
+						</div>					
 					<div class="botao">
 						<button type="submit" class="btn btn-primary btn-lg pull-right navbar-inverse">Inserir</button>
 						<!-- navbar-inverse é um macete para por o botão na cor preta =) -->
@@ -57,14 +65,18 @@
 					<table class="table table-striped">
 						<thead>
 							<tr>
-								<th>Codigo</th>
+								<th>#</th>
 								<th>Marca</th>
 								<th>Modelo</th>
 								<th>Placa</th>
 								<th>Cor</th>
-								<th>Ano Mod</th>
 								<th>Motor</th>
-								<th>Combustivel</th>
+								<th>Combustível</th>
+								<th>Ano Fab</th>
+								<th>Ano Mod</th>								
+								<th>Valor</th>
+								<th>Data de Compra</th>
+								<th>Situação</th>
 								<th>Observações</th>
 							</tr>
 						</thead>
@@ -75,9 +87,13 @@
 								<td th:text="${veiculo.modelo}"></td>
 								<td th:text="${veiculo.placa}"></td>
 								<td th:text="${veiculo.cor}"></td>
-								<td th:text="${veiculo.anoModelo}"></td>
 								<td th:text="${veiculo.motor}"></td>
 								<td th:text="${veiculo.combustivel}"></td>
+								<td th:text="${veiculo.anoFabricacao}"></td>
+								<td th:text="${veiculo.anoModelo}"></td>
+								<td th:text="${veiculo.valor}"></td>
+								<td th:text="${veiculo.dataEntradaEstoque}"></td>
+								<td th:text="${veiculo.situacao}"></td>						
 								<td th:text="${veiculo.observacoes}"></td>						
 								 
 							</tr>
