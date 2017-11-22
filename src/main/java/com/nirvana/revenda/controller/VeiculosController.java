@@ -22,30 +22,24 @@ public class VeiculosController {
 	@GetMapping
 	public ModelAndView listar() {
 		ModelAndView mv = new ModelAndView("ListaVeiculos");		
-		mv.addObject("veiculos", veiculos.findAll());
+		mv.addObject("todosVeiculos", veiculos.findAll());
 		mv.addObject(new Veiculo());
+		
+		
 
 		
 		return mv;		
 	}
-	
-	/**
-	 * Metodo sem mensagem	 
-	@PostMapping
-	public String salvar(Veiculo veiculo) {
-		this.veiculos.save(veiculo);
-		
-		return "redirect:/veiculos";
-	}
-	* 
-	 */
 	
 	
 	@PostMapping
 	public ModelAndView salvar(Veiculo veiculo) {
 		this.veiculos.save(veiculo);
 		ModelAndView mv = new ModelAndView("ListaVeiculos");
-		mv.addObject("mensagem", "Titúlo SAlvo com Sucesso!!!");
+		mv.addObject("mensagem", "Veículo Inserido com Sucesso!!!");
+		mv.addObject("todosVeiculos", veiculos.findAll()); //Para listar os veículos após a inclusão de um novo.
+
+		
 		return mv;
 		
 	}

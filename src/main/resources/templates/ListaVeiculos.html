@@ -8,6 +8,7 @@
 		<link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet"/>
 		<link th:href="@{/webjars/bootstrap/css/bootstrap-theme.min.css}" rel="stylesheet"/>
 		<link rel="stylesheet" type="text/css" href="/css/style.css"/>
+		<link rel="icon" type="image/png" href="images/favicon.ico" />
 	</head>
 	
 	<body>
@@ -87,7 +88,7 @@
 							</tr>
 						</thead>
 						<tbody>				
-								<tr th:each="veiculo : ${veiculos}">
+								<tr th:each="veiculo : ${todosVeiculos}">
 								<td th:text="${veiculo.id}"></td>
 								<td th:text="${veiculo.marca}"></td>
 								<td th:text="${veiculo.modelo}"></td>
