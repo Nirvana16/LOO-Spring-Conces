@@ -28,3 +28,7 @@
 	margin-bottom: 10px;
 	
 }
+
+.form-inline .form-control{ 
+	width: 199px;
+}

@@ -42,16 +42,14 @@
 						<input type="text" class="form-control" placeholder="Motor" th:field="*{motor}"/>
 						<input type="text" class="form-control" placeholder="Combustivel" th:field="*{combustivel}"/>
 					</div>
-					<div class="form-group">
+					<div class="form-group ">
 						<input type="text" class="form-control" placeholder="Ano Fabricação" th:field="*{anoFabricacao}"/>
 						<input type="text" class="form-control" placeholder="Ano Modelo" th:field="*{anoModelo}"/>
 						<input type="text" class="form-control" placeholder="Valor" th:field="*{valor}"/>
 						<input type="text" class="form-control" placeholder="Data de Entrada" th:field="*{dataEntradaEstoque}"/>
 						<input type="text" class="form-control" placeholder="Observações" th:field="*{observacoes}"/>	
 						<select class="form-control" th:field="*{situacao}">
-							<option value="ESTOQUE">Em Estoque</option>
-							<option value="RESERVADO">Reservado</option>
-							<option value="VENDIDO">Vendido</option>			
+							<option th:each="situacao : ${todasSituacoes}" th:value="${situacao}" th:text="${situacao.mascara}"></option>			
 						</select>		
 					</div>					
 					<div class="botao">
